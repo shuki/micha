@@ -19,7 +19,7 @@ class config
 	const dbcharset = 'utf8';
 	const dbname = 'micha';
 	const dbuser   = 'root';
-	const dbpassword = 'earth12'; 
+	const dbpassword = ''; 
 	
 	const dbfetchStyle = PDO::FETCH_OBJ;
 	const dberrorMode = PDO::ERRMODE_EXCEPTION;
@@ -29,7 +29,7 @@ class config
 	const mysql_rel_path = '../../uploads/';
 	const hosts_table = 'jset_host';
 
-	const login = true;
+	const login = false;
 	const session = 'micha';
 	const login_page = 'login.php';
 	const start_page = 'index.php';
