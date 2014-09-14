@@ -8,17 +8,6 @@
 			use: true,
 			columns: 1
 		},
-		afterSubmitError: function(response, postdata, frmoper, obj){
-			var message = obj.error.message;
-			switch(obj.error.info[1]){
-				case 1062: 
-					message = 'קיים כבר אזור בשם זה.';
-					break;
-				default:
-					;
-			}
-			return [false, message];
-		},
 	    grid: {
 	    	direction: 'rtl',
 			//autowidth: true,
