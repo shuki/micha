@@ -89,8 +89,14 @@ $(function(){
 				}
 			}
 		},
+		filterToolbar:{
+			hide: true
+		},
 		persist: false,
 		clearPersist: {
+			navButtonAdd: false
+		},
+		columnChooser:{
 			navButtonAdd: false
 		},
 		clearFilterToolbar:{
@@ -102,40 +108,27 @@ $(function(){
 				position: 'last'
 			}
 		},
+		copy: {
+			navButtonAdd: false
+		},
+		'import': {
+			navButtonAdd: false
+		},
 		'export':{
-			navButtonAdd: true,
-			options: {
-				caption: '',
-				title: 'ייצא לאקסל',
-				buttonicon: 'ui-icon-star',
-				position: 'last'
-			},
-			associative:'both'
-		},
-		help:{
-			hide: false,
 			navButtonAdd: false,
-			dialog: {
-				title: 'הסבר'
-			}
 		},
-	    grid: {
-	    	direction: 'rtl',
-		    width: $(window).width() - 24,
-		    height: $(window).height() - 135,
-			rownumWidth: 30
-	  	},
 	  	navigation:{
 			options : {
-				del: user_attributes.group == 1,
+				del: false,
+				add: false,
+				edit: false,
 				search: false,
-				view: false
+				view: false,
+				refresh: false
 			},
 			edit:{
-				checkOnUpdate:true
 			},
 			add:{
-				checkOnUpdate:true
 			},
 			del:{
 			},
