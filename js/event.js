@@ -22,7 +22,7 @@
 	    grid: {
 	    	direction: 'rtl',
 			//autowidth: true,
-			width: 800,
+			width: 900,
 			height: 300,
 			//height: $(window).height() - 164,
 			//footerrow : true,
