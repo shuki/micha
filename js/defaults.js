@@ -90,7 +90,7 @@ $(function(){
 			}
 		},
 		filterToolbar:{
-			hide: true
+			hide: false
 		},
 		persist: false,
 		clearPersist: {

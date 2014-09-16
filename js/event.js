@@ -23,7 +23,7 @@
 	    	direction: 'rtl',
 			//autowidth: true,
 			width: 900,
-			height: 300,
+			height: 280,
 			//height: $(window).height() - 164,
 			//footerrow : true,
 			//userDataOnFooter : true,
