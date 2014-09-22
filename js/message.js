@@ -1,7 +1,7 @@
 ﻿$(function(){
-	$.jset.fn.registerGridDefinition('event', {
-	  	source: 'event',
-	  	item_name: 'אירוע',
+	$.jset.fn.registerGridDefinition('message', {
+	  	source: 'message',
+	  	item_name: 'הודעה',
 	  	searchall: true,
 		load_edit_record: false,
 		template: {
@@ -12,7 +12,7 @@
 			var message = obj.error.message;
 			switch(obj.error.info[1]){
 				case 1062: 
-					message = 'קיים כבר אירוע בשם זה, באותו התאריך ובאותה השעה.';
+					message = 'קיימת כבר הודעה בשם זה, באותו התאריך ובאותה השעה.';
 					break;
 				default:
 					;
@@ -33,5 +33,5 @@
 	  	}
 	});
 	
-	$('#grid').jset($.extend(true, {}, $.jset.fn.getGridDefinition('event'), $.jset.fn.url_filters()));
+	$('#grid').jset($.extend(true, {}, $.jset.fn.getGridDefinition('message'), $.jset.fn.url_filters()));
 });
