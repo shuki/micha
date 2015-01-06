@@ -19,11 +19,17 @@
 			}
 			return [false, message];
 		},
+		'import': {
+			navButtonAdd: true
+		},
+		'export':{
+			navButtonAdd: true
+		},
 	    grid: {
 	    	direction: 'rtl',
 			//autowidth: true,
-			width: 800,
-			height: 280,
+		    width: $(window).width() - 14,
+		    height: $(window).height() - 112,
 			//height: $(window).height() - 164,
 			//footerrow : true,
 			//userDataOnFooter : true,

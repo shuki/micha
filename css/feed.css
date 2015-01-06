@@ -1,0 +1,18 @@
+BODY 		{ margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; }
+
+ /* FONT COLORS */
+TABLE		{ COLOR: #000000; FONT: 11px arial, sans-serif; font-weight: normal }
+
+.title		{ COLOR: #0033FF; FONT: 12px arial, sans-serif; font-weight: bold; }
+
+#NewsDiv	{ position: absolute; left: 0; top: 0; width: 100% }
+
+ /* PAGE LINK COLORS */
+
+a:link		{ color: #0033FF; text-decoration: underline; }
+
+a:visited	{ color: #6633FF; text-decoration: underline; }
+
+a:active	{ color: #0033FF; text-decoration: underline; }
+
+a:hover		{ color: #6699FF; text-decoration: none; }
