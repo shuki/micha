@@ -121,7 +121,7 @@ $(function(){
 			options : {
 				del: false,
 				add: false,
-				edit: false,
+				edit: true,
 				search: false,
 				view: false,
 				refresh: false
@@ -140,3 +140,12 @@ $(function(){
 	});
 });
 
+var fn_micha = {
+	apply: function(formid){
+		var grid = $(this);
+		if(!manager_flag){
+			$('span.ui-jqdialog-title').html('הצג הודעה');
+			$.jset.fn.readonlySet(grid, formid, !manager_flag);
+		}
+	}
+};

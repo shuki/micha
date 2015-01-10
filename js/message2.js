@@ -8,6 +8,14 @@
 			use: true,
 			columns: 1
 		},
+		beforeShowForm: function(formid){
+			fn_micha.apply.call(this, formid);
+		},
+		afterclickPgButtons : function (whichbutton, formid, rowid){
+			var grid = $(this);
+			fn_micha.apply.call(this, formid);
+			//$.jset.fn.readonlySet(grid, formid, false);
+		},
 		afterSubmitError: function(response, postdata, frmoper, obj){
 			var message = obj.error.message;
 			switch(obj.error.info[1]){
@@ -20,7 +28,7 @@
 			return [false, message];
 		},
 		'import': {
-			navButtonAdd: true
+			//navButtonAdd: true
 		},
 		'export':{
 			navButtonAdd: true
@@ -33,7 +41,7 @@
 			//height: $(window).height() - 164,
 			//footerrow : true,
 			//userDataOnFooter : true,
-			sortname: 'date',
+			sortname: 'creation_date',
 			sortorder: 'desc',
 			toppager: false
 	  	}

@@ -11,7 +11,9 @@
  $manager = isset($_GET['manager']) && $_GET['manager'] == 'micha_bar_meir';
 ?>
 <!--script src="../../jxset/jset/i18n/grid.locale-he.js" type="text/javascript"></script-->
-
+<script>
+	var manager_flag = <?php echo $manager ? 'true' : 'false'; ?>;
+</script>
 <head>
 <title>הודעות</title>
 <script src="js/defaults.js" type="text/javascript"></script>
