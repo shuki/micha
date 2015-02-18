@@ -1,0 +1,7 @@
+[18-Feb-2015 05:02:47 Europe/Minsk] PHP Fatal error:  Uncaught exception 'SmartyCompilerException' with message 'Syntax Error in template "tpl/feed.tpl"  on line 23 "&lt;!-- SCROLLER CONTENT ENDS HERE --&gt;" unclosed {if} tag' in C:\xampp\htdocs\micha\report\smarty\libs\sysplugins\smarty_internal_templatecompilerbase.php:441
+Stack trace:
+#0 C:\xampp\htdocs\micha\report\smarty\libs\sysplugins\smarty_internal_compilebase.php(141): Smarty_Internal_TemplateCompilerBase->trigger_template_error('unclosed {if} t...')
+#1 C:\xampp\htdocs\micha\report\smarty\libs\sysplugins\smarty_internal_compile_foreach.php(206): Smarty_Internal_CompileBase->_close_tag(Array)
+#2 C:\xampp\htdocs\micha\report\smarty\libs\sysplugins\smarty_internal_templatecompilerbase.php(294): Smarty_Internal_Compile_Foreachclose->compile(Array, Object(Smarty_Internal_SmartyTemplateCompiler), Array, NULL, NULL)
+#3 C:\xampp\htdocs\micha\report\smarty\libs\sysplugins\smarty_internal_templatecompilerbase.php(125): Smarty_Internal_TemplateCompilerBase->callTagCompiler('foreachclose', Array, Array)
+#4 C:\xam in C:\xampp\htdocs\micha\report\smarty\libs\sysplugins\smarty_internal_templatecompilerbase.php on line 441

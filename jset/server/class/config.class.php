@@ -49,4 +49,5 @@ class config
 	const join_field_suffix = '_jxfield';
 	
 	const dbname_default = 'micha';// for report
+	const tpl = 'proxy.tpl';
 }
