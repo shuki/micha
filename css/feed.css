@@ -1,9 +1,9 @@
 BODY 		{ margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; }
 
  /* FONT COLORS */
-TABLE		{ COLOR: #000000; FONT: 12px arial, sans-serif; font-weight: normal }
+TABLE		{ COLOR: #000000; FONT: 14px arial, sans-serif; font-weight: normal }
 
-.title		{ COLOR: #0033FF; FONT: 12px arial, sans-serif; font-weight: bold; }
+.title		{ COLOR: #0033FF; FONT: 14px arial, sans-serif; font-weight: bold; }
 
 #NewsDiv	{ position: absolute; left: 0; top: 0; width: 100% }
 

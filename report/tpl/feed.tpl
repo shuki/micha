@@ -14,8 +14,8 @@
 
 {foreach from=$data key=k item=row}
 <span class="title">
-{if $row->title}{$row->title}<br>{/if}
 {$row->creation_date_fmt}<br>
+{if $row->title}{$row->title}<br>{/if}
 {if $row->name}<span style="color:black;">מאת: </span>{$row->name}<br>{/if}
 </span>
 {$row->body}
