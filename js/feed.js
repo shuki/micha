@@ -4,7 +4,10 @@ $(function(){
 	var startdelay 		= "2"; 		// START SCROLLING DELAY IN SECONDS
 	var nextdelay		= "0"; 		// SECOND SCROLL DELAY IN SECONDS 0 = QUICKEST
 	var topspace		= "2px";		// TOP SPACING FIRST TIME SCROLLING
-	var frameheight		= "204px";	// IF YOU RESIZE THE WINDOW EDIT THIS HEIGHT TO MATCH
+	//var frameheight		= "250px";	// IF YOU RESIZE THE WINDOW EDIT THIS HEIGHT TO MATCH
+	
+	var timoutgap		= 60000;
+	var newContents = false;
 	var current = scrollgap;
 	
 	function getRequestVars(){
@@ -21,7 +24,6 @@ $(function(){
 		AreaHeight=dataobj.offsetHeight;
 		if (AreaHeight==0){
 			setTimeout("HeightData()",( startdelay * 1000 ));
-			//console.log(dataobj.offsetHeight);
 		}
 		else
 			ScrollNewsDiv();
@@ -39,8 +41,12 @@ $(function(){
 		dataobj.style.top=parseInt(dataobj.style.top)-(scrollgap);
 		if (parseInt(dataobj.style.top)<AreaHeight*(-1)){
 			dataobj.style.top=frameheight;
+			if(newContents){
+				$('table#contents td').html(newContents);
+				HeightData();
+				newContents = false;
+			}
 			setTimeout(ScrollNewsDiv,( nextdelay * 100 ));
-			//console.log(dataobj.style.top);
 		}
 		else
 			setTimeout(ScrollNewsDiv,1000/(speed > 0 ? speed : 1));
@@ -48,13 +54,17 @@ $(function(){
 	
 	function get_checksum(){
 		$.get('checksum.php', requestVars, function(data){
-			//console.log(data);
+			if(data != checksum){
+				checksum = data;
+				get_contents();
+			}
+			setTimeout(get_checksum, timoutgap);			
 		});
 	}
 	
 	function get_contents(){
 		$.get('contents.php', requestVars, function(data){
-			//console.log(data);
+			newContents = data;
 		});
 	}
 	
@@ -65,7 +75,6 @@ $(function(){
 	});
 	
 	var requestVars = getRequestVars();
-	//console.log(requestVars);
 	NewsScrollStart();
-	get_checksum();
+	var timer = setTimeout(get_checksum, timoutgap);
 });
