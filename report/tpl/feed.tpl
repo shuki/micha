@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="../css/feed.css" />
 <script>
 	var speed = "{if isset($request->speed)}{$request->speed}{else}30{/if}";	// ADJUST SCROLL JUMPING = RANGE 0 TO 1000
-	var frameheight = "{if isset($request->frameheight)}{$request->frameheight}{else}250{/if}";	// ADJUST TO IFRAME HEIGHT
+	var frameheight = "{if isset($request->frameheight)}{$request->frameheight}{else}250{/if}px";	// ADJUST TO IFRAME HEIGHT
 	var checksum = "{$checksum}";
 </script>
 <script src="../../jxset/jset/jquery/jquery-1.8.2.js" type="text/javascript"></script>
