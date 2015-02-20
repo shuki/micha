@@ -46,6 +46,9 @@ class report {
 		foreach($_SESSION as $key => $value)
 			$data->$key = $value;
 		
+		foreach($_REQUEST as $key => $value)
+			$data->request->$key = $value;
+		
 		$res = $this->db->query(self::SQL_GET_REPORT, array($params['reportId']));
 		if(isset($res->error))
 			$this->error('unable to get report ' . $params['reportId'] . '.', $res->error); 
