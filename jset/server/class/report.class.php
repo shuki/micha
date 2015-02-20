@@ -290,11 +290,11 @@ class report {
 		//$smarty->debugging = true;
 		
 		$smarty->assign('tpl_name', "tpl/" . ($data->report->tpl ? $data->report->tpl : "content_table") . ".tpl");
-		//$message = $smarty->display("tpl/report.tpl");
+		$smarty->assign('tpl_contents_name', "tpl/" . ($data->report->tpl_contents ? $data->report->tpl_contents : "data") . ".tpl");
 		$message = $smarty->display("tpl/" . (defined('config::tpl') ? config::tpl : "report.tpl"));
 	}
 
-	private function display_contents($data, $tpl){
+	private function display_contents($data){
 		define('SMARTY_DIR', 'smarty/libs/');
 		
 		require_once(SMARTY_DIR . 'Smarty.class.php');
@@ -313,7 +313,8 @@ class report {
 		//$smarty->debugging = true;
 		$tpl = "data";
 		$smarty->assign('tpl_name', "tpl/" . ($data->report->tpl ? $data->report->tpl : "content_table") . ".tpl");
-		return $smarty->fetch("tpl/" . $tpl . ".tpl");
+		$smarty->assign('tpl_contents_name', "tpl/" . $data->report->tpl_contents . ".tpl");
+		return $smarty->fetch("tpl/" . $data->report->tpl_contents . ".tpl");
 	}
 
 	private function execute($db_name, $host, $sql, $error){

@@ -18,7 +18,8 @@
 <div id="NewsDiv">
 <table id="contents" cellpadding="5" cellspacing="0" border="0" width="100%"><tr><td>
 <!-- SCROLLER CONTENT STARTS HERE -->
-{include file="tpl/data.tpl"}
+{*include file="tpl/data.tpl"*}
+{include file="$tpl_contents_name"}
 <!-- SCROLLER CONTENT ENDS HERE -->
 </td></tr></table>
 </div>
