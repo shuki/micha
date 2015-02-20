@@ -1,6 +1,4 @@
 $(function(){
-	//var urlVars = $.getUrlVars();
-	//console.log(urlVars);	
 	var scrollgap		= "1";		// SET SCROLLER SPEED 1 = SLOWEST
 	//var speed			= "10";		// ADJUST SCROLL JUMPING = RANGE 20 TO 40
 	var startdelay 		= "2"; 		// START SCROLLING DELAY IN SECONDS
@@ -9,17 +7,29 @@ $(function(){
 	var frameheight		= "204px";	// IF YOU RESIZE THE WINDOW EDIT THIS HEIGHT TO MATCH
 	var current = scrollgap;
 	
+	function getRequestVars(){
+		var urlVars = $.getUrlVars();
+		var vars = {};	
+		$.each(urlVars, function(key, value){
+			vars[value] = decodeURIComponent(urlVars[value]);
+		});
+		
+		return vars;
+	}
+
 	function HeightData(){
 		AreaHeight=dataobj.offsetHeight;
-		if (AreaHeight==0)
+		if (AreaHeight==0){
 			setTimeout("HeightData()",( startdelay * 1000 ));
+			//console.log(dataobj.offsetHeight);
+		}
 		else
 			ScrollNewsDiv();
 	}
 	
 	function NewsScrollStart(){
-		if(window.frameElement && window.frameElement.height)
-			frameheight = window.frameElement.height + 'px';
+		//if(window.frameElement && window.frameElement.height)
+		//	frameheight = window.frameElement.height + 'px';
 		dataobj=document.all? document.all.NewsDiv : document.getElementById("NewsDiv");
 		dataobj.style.top=topspace;
 		setTimeout(HeightData,( startdelay * 1000 ));
@@ -30,9 +40,22 @@ $(function(){
 		if (parseInt(dataobj.style.top)<AreaHeight*(-1)){
 			dataobj.style.top=frameheight;
 			setTimeout(ScrollNewsDiv,( nextdelay * 100 ));
+			//console.log(dataobj.style.top);
 		}
 		else
 			setTimeout(ScrollNewsDiv,1000/(speed > 0 ? speed : 1));
+	}
+	
+	function get_checksum(){
+		$.get('checksum.php', requestVars, function(data){
+			//console.log(data);
+		});
+	}
+	
+	function get_contents(){
+		$.get('contents.php', requestVars, function(data){
+			//console.log(data);
+		});
 	}
 	
 	$('body').bind('mouseover', function(){
@@ -41,5 +64,8 @@ $(function(){
 		scrollgap = current;
 	});
 	
+	var requestVars = getRequestVars();
+	//console.log(requestVars);
 	NewsScrollStart();
+	get_checksum();
 });

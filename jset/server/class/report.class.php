@@ -42,6 +42,23 @@ class report {
 			$this->error('missing parameter - reportId.');
 	}
 
+	public function contents($params){
+		if($params['reportId']){
+			$data = $this->get_page_data($params);
+			return $this->display_contents($data);
+		}else
+			$this->error('missing parameter - reportId.');
+	}
+
+	public function checksum($params){
+		if($params['reportId']){
+			$data = $this->get_page_data($params);
+			//die(var_dump($data->checksum));
+			return $data->checksum;
+		}else
+			$this->error('missing parameter - reportId.');
+	}
+
 	private function get_page_data($params){
 		foreach($_SESSION as $key => $value)
 			$data->$key = $value;
@@ -71,6 +88,8 @@ class report {
 						 	$sql,
 							'unable to run the report sql - ' .$sql  . '.');
 						$data->data = $db->fetchAll();
+						$data->checksum = md5(serialize($data->data));
+						
 						if($report->sql_aggregate){
 							$sql_aggregate = str_replace($parameters->tokens, $parameters->values, $report->sql_aggregate);						
 							$sql_aggregate = str_replace('($SQL)', "($sql)", $sql_aggregate);
@@ -273,6 +292,28 @@ class report {
 		$smarty->assign('tpl_name', "tpl/" . ($data->report->tpl ? $data->report->tpl : "content_table") . ".tpl");
 		//$message = $smarty->display("tpl/report.tpl");
 		$message = $smarty->display("tpl/" . (defined('config::tpl') ? config::tpl : "report.tpl"));
+	}
+
+	private function display_contents($data, $tpl){
+		define('SMARTY_DIR', 'smarty/libs/');
+		
+		require_once(SMARTY_DIR . 'Smarty.class.php');
+		$smarty = new Smarty();
+
+		$smarty->template_dir = 'template/templates/';
+		$smarty->compile_dir  = 'template/templates_c/';
+		$smarty->config_dir   = 'template/configs/';
+		$smarty->cache_dir    = 'template/cache/';
+
+		if($data)
+			foreach($data as $key => $value){
+				$smarty->assign($key, $value);
+		}
+		//** un-comment the following line to show the debug console
+		//$smarty->debugging = true;
+		$tpl = "data";
+		$smarty->assign('tpl_name', "tpl/" . ($data->report->tpl ? $data->report->tpl : "content_table") . ".tpl");
+		return $smarty->fetch("tpl/" . $tpl . ".tpl");
 	}
 
 	private function execute($db_name, $host, $sql, $error){
